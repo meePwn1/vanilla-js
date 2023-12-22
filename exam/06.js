@@ -172,3 +172,15 @@ console.log(addFriends(students))
 // getBestStudents(students) => {name: "Nick", age: 20, isMarried: false, scores: 120}
 // getBestStudents(students, 3) => [{...}, {...}, {...}]
 // getBestStudents(students, 10) => [{}, {}, ...., {}, null, null, null, null ]
+const getBestStudents = (students, count = 1) => {
+	const sortedStudents = students.slice().sort((a, b) => b.scores - a.scores)
+	const filledArray = Array(count).fill(null)
+
+	if (count === 1) return sortedStudents[0]
+
+	sortedStudents.forEach((el, i) => (filledArray[i] = el))
+
+	return filledArray
+}
+
+getBestStudents(students, 10) //?
